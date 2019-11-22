@@ -1,0 +1,109 @@
+
+<html>
+<head>
+<style>
+
+body{
+    background: aqua;
+}
+
+.clock{
+    width: 200px;
+    height: 200px;
+    top: 0%;
+    left: 0%;
+    position:absolute;
+}
+
+.clock .face {
+    background: aqua;
+    width: 10 px;
+    border-radius: 90rem;
+    border: 10px  solid #fff;
+    height: 200px;
+    width: 200px;
+
+}
+
+.clock .hand{
+   
+    height: 3px;
+   /* background: #fff;*/
+    top: 50%;
+    left: 50%;
+    position:absolute;
+    transform-origin: 0rem;
+    transform: rotate(360deg);
+}
+
+.animate{
+    transform: rotate(20deg);
+}
+
+.clock .sechand{
+    background: red;
+    width: 90px;
+}
+
+
+.clock .minhand{
+    background: black;
+    width: 90px;
+}
+
+
+.clock .hourhand {
+    background: blue;
+    width: 70px;
+}
+
+</style>
+</head>
+<body>
+
+    <div class="clock">
+        <div class="clock face">
+            <div class="hand sechand"></div>
+            <div class="hand minhand"></div>
+            <div class="hand hourhand"></div>
+        </div>
+    </div>
+
+
+<script type="text/javascript">
+const myDate = new Date;
+const sec = document.querySelector('.sechand');
+const min = document.querySelector('.minhand');
+const hr = document.querySelector('.hourhand');
+
+    setInterval(() => {
+        const myDate = new Date;
+        const seconds = myDate.getSeconds();
+        const mins = myDate.getMinutes();
+        const hour = myDate.getHours();
+        const secDeg = ((seconds / 60) * 360) + 90;
+        const minDeg = ((mins / 60) * 360) + ((seconds/60)*6) + 90;
+        const hrDeg = ((hour / 12) * 360) + ((mins/60)*30) + 90;
+        //console.log(seconds);
+        rotateHand(secDeg, minDeg, hrDeg);
+    }, 1000);
+    
+
+    function rotateHand(secValue, minValue, hourValue){
+        
+       // console.log(minValue);
+        sec.style.transform = `rotate(${secValue}deg)`;
+        min.style.transform = `rotate(${minValue}deg)`;
+        hr.style.transform = `rotate(${hourValue}deg)`;
+    }
+
+//fix starting point
+
+//add ticking sound
+
+//add morph transition
+    
+</script>
+</body>
+
+</html>
